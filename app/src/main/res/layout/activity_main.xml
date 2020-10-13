@@ -48,17 +48,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#FFEE44">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/suitableLeftCons"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:background="#FFEE44"
                     android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="@+id/suitableRightCons"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -92,6 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
+                        android:orientation="vertical"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -103,6 +105,63 @@
                         <include layout="@layout/item_layout" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FF4444">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/noSuitableLeftCons"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/noSuitableRightCons"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/noSuitableRightCons">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不宜"
+                        android:textColor="#FFFFFF"
+                        android:textSize="36dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/noSuitableRightCons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="#FFDDD3"
+                    android:gravity="center"
+                    app:layout_constraintLeft_toRightOf="@id/noSuitableLeftCons"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/noSuitableRightLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:orientation="vertical"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <include layout="@layout/item_layout" />
+
+                        <include layout="@layout/item_layout" />
+
+                        <include layout="@layout/item_layout" />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </LinearLayout>
