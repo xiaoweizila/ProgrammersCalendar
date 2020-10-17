@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private int iday = 0;
     private RatingBar ratingBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,18 +78,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pickTodaysLuck() {
-
         int numGood = random(iday, 98) % 3 + 2;
         int numBad = random(iday, 87) % 3 + 2;
         List<DataModel> eventArr = pickRandomActivity(filter(), numGood + numBad);
-
-        // int[] specialSize = pickSpecials();
-
         for (int i = 0; i < numGood; i++) {
-            System.out.println("zzzzz");
             addToGood(eventArr.get(i));
         }
-
         for (int i = 0; i < numBad; i++) {
             addToBad(eventArr.get(numGood + i));
         }
@@ -150,7 +143,11 @@ public class MainActivity extends AppCompatActivity {
             result.remove(index);
         }
         for (int i = 0; i < result.size(); i++) {
-            data = data + result.get(i) + ",";
+            if (i == result.size()) {
+                data = data + result.get(i);
+            } else {
+                data = data + result.get(i) + ",";
+            }
         }
         return data;
     }
@@ -186,42 +183,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean isWeekend() {//是否是周末
-        if (week == 0 || week == 6) {
+        if (week == 1 || week == 7) {//1和7代表周末
             return true;
         } else {
             return false;
         }
     }
 
-    //    // 添加预定义事件
-//    public int[] pickSpecials() {
-//        int[]  specialSize =new int[2];
-//
-//        for (int i = 0; i < specials.size(); i++) {
-//            SpecialModel special = specials.get(i);
-//
-//            if (iday == special.date) {
-//                if (special.type == "good") {
-//                    specialSize[0]++;
-//                    addToGood({name: special.name, good: special.description});
-//                } else {
-//                    specialSize[1]++;
-//                    addToBad({name: special.name, bad: special.description});
-//                }
-//            }
-//        }
-//
-//        return specialSize;
-//    }
     public String getTodayString() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);//获取年份
-        int month = cal.get(Calendar.MONTH) + 1;//获取月份 因为取到的值是从 0 到 11
+        int month = cal.get(Calendar.MONTH);//获取月份
         int day = cal.get(Calendar.DATE);//获取日
         String WeekOfYear = getWeek(cal.get(Calendar.DAY_OF_WEEK));//一周的第几天
         week = cal.get(Calendar.DAY_OF_WEEK);
         iday = year * 10000 + month * 100 + day;
-        return "今天是" + year + "年" + month + "月" + day + "日 " + "星期" + WeekOfYear;
+        return "今天是" + year + "年" + (month + 1) + "月" + day + "日 " + "星期" + WeekOfYear;
     }
 
     public void initList() {
